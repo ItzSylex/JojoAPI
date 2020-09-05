@@ -11,12 +11,15 @@ class GetData:
 
 
     def load_json(self):
-        with open('test.json') as file:
+        with open('app/data.json') as file:
             data = json.load(file)
 
         return data
 
     def get_data(self, key:str = None, filter_key:str = None, filter_value:str = None):
+        print(key)
+        print(filter_key)
+        print(filter_value)
 
         """
         Helper function that retrieves the data from
@@ -31,20 +34,21 @@ class GetData:
             return result
         else:
             if key is not None:
-                if any([filter_key, filter_value]):
+                if all([filter_key, filter_value]):
                     new_dict = {info for info in self.json[key] if info[filter_key] == filter_value}
                     return new_dict
                 else:
                     result = self.json[key]
                     return result
             else:
-                if any([filter_key, filter_value]):
+                if all([filter_key, filter_value]):
                     new_dict = dict()
                     for key_serie, value_series in self.json.items():
                         empty_list = []
                         for info in value_series:
                             try:
                                 if info[filter_key].lower() == filter_value.lower():
+                                    print('a')
                                     new_dict[key_serie] = empty_list
                                     for k,v in new_dict.items():
                                         if k == key_serie:
@@ -57,12 +61,11 @@ class GetData:
 
 
 
-    def valid_query(self, query):
+    def valid_query(self, serie, query):
 
         valid_keys = [
-                "id",
-                "name",
-                "user_gender",
+                "user",
+                "gender",
                 "hair_color",
                 "eye_color",
                 "stand",
@@ -70,6 +73,7 @@ class GetData:
                 "stand_image",
                 "user_image"
                 ]
+
 
         keys = [k for k in query]
         values = [v for v in query.values()]

@@ -1,11 +1,27 @@
-from flask import Flask, jsonify, request
-import json
-from getter import GetData
-
-app = Flask(__name__)
-app.config['JSON_SORT_KEYS'] = False
+from app import app
+from app.getter import GetData
+from flask import request, jsonify
 
 rou = GetData()
+
+# @app.route('/', defaults={'serie': None})
+# @app.route('/<serie>')
+# def endpoint(serie = None):
+#
+#     valid_serie = [
+#         'DiamondIsUnbreakable',
+#         'GoldenWind',
+#         'StardustCrusaders'
+#     ]
+#
+#     if serie is not None and not request.args:
+#         data = rou.get_data(None, None, None)
+#         return jsonify(data), 200
+#
+#     if serie and request.args:
+#         if serie in valid_serie:
+#
+#             data = rou.get_data(serie, None, None)
 
 
 @app.route('/', methods=['GET'])
@@ -33,24 +49,3 @@ def get_diamond():
 def get_golden():
     data = rou.get_data('GoldenWind', None, None)
     return jsonify(data), 200
-
-
-" === Error Handling === "
-
-@app.errorhandler(404)
-def not_found(error):
-    """Page not found."""
-    return {"message": 'This page does not exist'}, 404
-
-@app.errorhandler(400)
-def bad_request(error):
-    """Bad request."""
-    return {'message': 'Bad request'}, 400
-
-@app.errorhandler(500)
-def server_error(error):
-    """Internal server error."""
-    return {"message": 'Internal server error'}, 500
-
-if __name__ == '__main__':
-    app.run(debug = True)
