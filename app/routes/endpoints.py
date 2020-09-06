@@ -32,20 +32,21 @@ def get_all_data():
         return jsonify(data)
     else:
         data = rou.get_data(None, None, None)
-        return jsonify(data), 200
+
+        return jsonify(data), 200, {'Content-Type': 'application/json; charset=utf-8'}
 
 
 @app.route('/StardustCrusaders', methods=['GET'])
 def get_stardust():
     data = rou.get_data('StardustCrusaders', None, None)
-    return jsonify(data), 200
+    return jsonify(data), 200, {'Content-Type': 'application/json; charset=utf-8'}
 
 @app.route('/DiamondIsUnbreakable', methods=['GET'])
 def get_diamond():
     data = rou.get_data('DiamondIsUnbreakable', None, None)
-    return jsonify(data), 200
+    return jsonify(data), 200, {'Content-Type': 'application/json; charset=utf-8'}
 
 @app.route('/GoldenWind', methods=['GET'])
 def get_golden():
     data = rou.get_data('GoldenWind', None, None)
-    return jsonify(data), 200
+    return jsonify(data), 200, {'Content-Type': 'application/json; charset=utf-8'}
