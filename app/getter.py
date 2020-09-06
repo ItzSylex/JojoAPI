@@ -1,7 +1,6 @@
 import json
-import pprint
 
-pp = pprint.PrettyPrinter(indent=4)
+
 
 class GetData:
 
@@ -84,13 +83,3 @@ class GetData:
 
         else:
             return {"Message": f"Filter key: {keys[0]} is not valid"}
-
-
-    def test(self):
-        for i in self.json:
-            if 'Gender' not in i:
-                pp.pprint(i)
-
-
-a = GetData()
-a.test()
