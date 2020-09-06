@@ -32,7 +32,7 @@ def get_all_data():
         return jsonify(data)
     else:
         data = rou.get_data(None, None, None)
-
+        print(type(jsonify(data)))
         return jsonify(data), 200, {'Content-Type': 'application/json; charset=utf-8'}
 
 
