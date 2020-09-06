@@ -60,7 +60,7 @@ class GetData:
 
 
 
-    def valid_query(self, serie, query):
+    def valid_query(self, serie):
 
         valid_keys = [
                 "user",
@@ -74,8 +74,8 @@ class GetData:
                 ]
 
 
-        keys = [k for k in query]
-        values = [v for v in query.values()]
+        keys = [k for k in serie]
+        values = [v for v in serie.values()]
 
         if all(key in valid_keys for key in keys):
             data = self.get_data(None, keys[0], values[0])
