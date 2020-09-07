@@ -6,3 +6,4 @@ app.config['jSONIFY_PRETTYPRINT_REGULAR'] = True
 
 from app.routes import endpoints
 from app.routes import error
+from app.routes import tests
