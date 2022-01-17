@@ -1,4 +1,4 @@
 Flask
 requests
 gunicorn
-flask-cors
+Flask-Cors==3.0.10
