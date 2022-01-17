@@ -1,13 +1,11 @@
 import json
 
 
-
 class GetData:
 
     def __init__(self):
 
         self.json = self.load_json()
-
 
     def load_json(self):
         with open('app/data.json') as file:
@@ -15,11 +13,7 @@ class GetData:
 
         return data
 
-    def get_data(self, key:str = None, filter_key:str = None, filter_value:str = None):
-        print(key)
-        print(filter_key)
-        print(filter_value)
-
+    def get_data(self, key: str = None, filter_key: str = None, filter_value: str = None):
         """
         Helper function that retrieves the data from
         the json file that matches a specific key
@@ -47,9 +41,8 @@ class GetData:
                         for info in value_series:
                             try:
                                 if info[filter_key].lower() == filter_value.lower():
-                                    print('a')
                                     new_dict[key_serie] = empty_list
-                                    for k,v in new_dict.items():
+                                    for k, v in new_dict.items():
                                         if k == key_serie:
                                             v.append(info)
                             except KeyError:
@@ -57,8 +50,6 @@ class GetData:
                         if len(new_dict) == 0:
                             new_dict = {"Message": f"No results found with {filter_key} that has {filter_value} as its value"}
                     return new_dict
-
-
 
     def valid_query(self, serie):
 
@@ -72,7 +63,6 @@ class GetData:
                 "stand_image",
                 "user_image"
                 ]
-
 
         keys = [k for k in serie]
         values = [v for v in serie.values()]

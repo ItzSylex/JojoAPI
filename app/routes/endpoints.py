@@ -10,6 +10,8 @@ rou = GetData()
 @cross_origin()
 def get_all_data():
 
+    print("CORS")
+
     if request.args:
         data = rou.valid_query(request.args)
         return jsonify(data)

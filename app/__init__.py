@@ -6,7 +6,6 @@ app.config['JSON_SORT_KEYS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.config["DEBUG"] = True
 CORS(app)
-
 from app.routes import endpoints
 from app.routes import error
 from app.routes import tests
