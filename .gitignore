@@ -4,5 +4,5 @@ debug.log
 
 whendone.md
 
-scraper\sc.py
-app\getter.py
+sc.py
+getter.py
