@@ -1,7 +1,8 @@
 __pycache__/
 
-
 debug.log
 
-
 whendone.md
+
+sc.py
+getter.py
