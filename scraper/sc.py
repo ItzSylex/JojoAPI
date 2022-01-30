@@ -8,8 +8,6 @@ PATH = "C:\Program Files (x86)\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 
 
-
-
 def get_links():
     """
     DIO, JOESTAR STAND(DIO), ANUBIS
@@ -44,7 +42,7 @@ def get_all_data(sub_list: list, final_list):
     for num, link in enumerate(sub_list):
         driver.get(link)
         time.sleep(1)
-        if  num == 1:
+        if num == 1:
             try:
                 search = driver.find_element_by_xpath('//*[@id="mw-content-text"]/div[2]/aside')
                 result = list(search.text.split("\n"))
@@ -59,16 +57,16 @@ def get_all_data(sub_list: list, final_list):
                         information['user'] = data
 
                     if data.lower() in ['stand', 'gender']:
-                        information[data] = result[n+1]
+                        information[data] = result[n + 1]
 
-                    elif data.lower() in ['hair color','eye color']:
+                    elif data.lower() in ['hair color', 'eye color']:
                         for i in range(3):
                             i = i + 1
                             if 'Anime' in result[n + i]:
                                 information[data] = result[n + i]
                                 break
                             else:
-                                information[data] = result[n+1]
+                                information[data] = result[n + 1]
         if num == 0:
             try:
                 search = driver.find_element_by_xpath('//*[@id="mw-content-text"]/div/aside')
@@ -111,5 +109,6 @@ def main():
     with open("test.json", "w") as file:
         json.dump(final_list, file, indent = 4)
         print('DONE')
+
 
 main()

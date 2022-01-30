@@ -10,8 +10,6 @@ rou = GetData()
 @cross_origin()
 def get_all_data():
 
-    print("CORS")
-
     if request.args:
         data = rou.valid_query(request.args)
         return jsonify(data)
@@ -28,11 +26,13 @@ def get_stardust():
     data = rou.get_data('StardustCrusaders', None, None)
     return jsonify(data), 200, {'Content-Type': 'application/json; charset=utf-8'}
 
+
 @app.route('/DiamondIsUnbreakable', methods=['GET'])
 @cross_origin()
 def get_diamond():
     data = rou.get_data('DiamondIsUnbreakable', None, None)
     return jsonify(data), 200, {'Content-Type': 'application/json; charset=utf-8'}
+
 
 @app.route('/GoldenWind', methods=['GET'])
 @cross_origin()
