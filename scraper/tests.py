@@ -16,13 +16,12 @@ def check_for_datasource(link, data_source):
 
 def check_for_image(link):
     link = "https://jojowiki.com/Magician%27s_Red"
+    # link = "https://jojowiki.com/Star_Platinum"
     response = requests.get(link)
     soup = BeautifulSoup(response.content, "html.parser")
 
     img = []
-
     response_div = soup.find_all('div', attrs={'title': "Anime", "class": "tabbertab"})
-    response_div[0]
 
     for each in response_div:
         new = each.find('a', attrs={'class': "image"})
@@ -31,10 +30,9 @@ def check_for_image(link):
             for x in new.children:
                 img.append(x["src"])
         else:
-            print(response_div[0])
-    # print(img)
-
-    # TODO: Fix for when there are no multiple parts
+            new = response_div[0].find('a', attrs={'class': "image"})
+            for x in new.children:
+                print(x["src"])
 
 
 check_for_image("https://jojowiki.com/Magician%27s_Red")
