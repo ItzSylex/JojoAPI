@@ -1,3 +1,8 @@
+
+# Note
+
+Since heroku changed, link is currently down. If you wish to consume the data download the app/data.json file. I dont have plans on hosting this in the near future
+
 ### Jojo Stands Api
 
 This API shows some information of users and stands throughout the Anime series. Some information that is retrieve from this API includes `Stand Image`, `Stand Type`, `User Image` and much more.
